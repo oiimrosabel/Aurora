@@ -1,0 +1,10 @@
+text = "FFFFFF"
+header = "FFFFFF"
+active = "70C3FF"
+low = "F94144"
+
+bg = "000000"
+widget = "303030"
+
+hover = "70C3FF"
+hoverText = "000000"

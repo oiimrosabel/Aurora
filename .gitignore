@@ -1,0 +1,17 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# IDE files
+.idea/
+.vscode
+
+# Livrable
+dist
+
+# Zipped and backup files
+*.old
+*.muxzip
+*.muxthm
+*.zip
