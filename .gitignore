@@ -10,8 +10,11 @@ __pycache__/
 # Livrable
 dist
 
-# Zipped and backup files
+# Old adn backed up files
 *.old
+*.bak
+
+# Zipped files
 *.muxzip
 *.muxthm
 *.zip

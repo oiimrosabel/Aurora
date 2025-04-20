@@ -1,4 +1,3 @@
-import os
 import shutil
 from os import makedirs, unlink
 from pathlib import Path
@@ -97,12 +96,10 @@ class Node:
                 replaceable = dstFile.exists() and overwrite
                 if not dstFile.exists() or replaceable:
                     if replaceable:
-                        Console.warning(f"File {dstFile} exists, overwriting...")
+                        Console.warning(f"File {dstFile} already exists. Overwriting...")
                     shutil.copy2(srcFile, dstFile)
                 else:
                     Console.warning(f"File {dstFile.name} already exists")
-                    print(srcFile)
-                    print(dstFile)
         return self
 
     def change(self, path: Path):
@@ -192,21 +189,18 @@ class Node:
         if not self.__path.exists():
             Console.error(f"{self.__path} does not exist")
             return self
+
         src = self.__path
         dst = self.__path.parent / newName
-        print("###", dst)
 
         if dst.exists():
             if force:
                 Console.warning(f"{dst} already exists. Overwriting...")
                 Node(dst).delete()
-
             else:
-                Console.error(f"{dst} already exists")
-                return self
-        else:
-            os.rename(src, dst)
-            self.__path = dst
+                Console.error(f"{dst} already exists. Backing up...")
+                dst.rename(self.__path.parent / f"{dst.name}.bak")
+        self.__path = src.rename(dst)
         return self
 
     def __str__(self):
