@@ -16,11 +16,15 @@ class Node:
         self.__path = self.__toPath(path)
 
     def exists(self, asFile=False, asFolder=False) -> bool:
-        if asFolder:
-            return self.__path.is_dir()
-        if asFile:
-            return self.__path.is_file()
-        return self.__path.exists()
+        match (asFile, asFolder):
+            case (True, True):
+                return False
+            case (False, True):
+                return self.__path.is_dir()
+            case (True, False):
+                return self.__path.is_file()
+            case _:
+                return self.__path.exists()
 
     def delete(self) -> Self:
         if not self.__path.exists():

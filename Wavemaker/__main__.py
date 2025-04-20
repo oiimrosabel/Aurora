@@ -14,14 +14,18 @@ variantsFolder = root.go("variants")
 destFolder = root.go("dist").makeDir()
 
 
-def setOverlays():
-    overlaysFolder = resourcesFolder.go("overlays")
-    for resolution in supportedResolutions:
-        imagesFolder = auroraFolder.go([resolution, "image"])
-        overlayImage = overlaysFolder.go(f"{resolution}.png")
-        _, newImage = overlayImage.copy(imagesFolder.path())
-        newImage.rename("overlay.png", True)
-    Console.success("Overlays set.")
+def defineActive():
+    activeLocation = auroraFolder.go("active.txt")
+    activeLocation.write(defaultVariant)
+    Console.success(f"Default variant ({defaultVariant}) defined.")
+
+
+def zipAssets():
+    zipLocation = auroraFolder.go("assets.muxzip")
+    zipLocation.delete()
+    consoleIcons = resourcesFolder.go("consoleIcons")
+    consoleIcons.zip(zipLocation.path(), "muxzip")
+    Console.success("Assets zipped.")
 
 
 def createSchemesForVariants():
@@ -36,6 +40,23 @@ def createSchemesForVariants():
         ).mix()
         globalSchemeFile.write(result)
         Console.success(f"Schemes created for {variant}.")
+
+
+def copyActive():
+    defaultVariantFolder = variantsFolder.go([defaultVariant, "theme", "active"])
+    defaultVariantFolder.mergeInto(auroraFolder.path(), overwrite=True)
+    Console.success(f"Default variant ({defaultVariant}) copied.")
+
+
+def setOverlays():
+    overlaysFolder = resourcesFolder.go("overlays")
+    for resolution in supportedResolutions:
+        imagesFolder = auroraFolder.go([resolution, "image"])
+        overlayImage = overlaysFolder.go(f"{resolution}.png")
+        _, newImage = overlayImage.copy(imagesFolder.path())
+        newImage.rename("overlay.png", True)
+    Console.success("Overlays set.")
+
 
 def createSchemesForResolutions():
     resolutionsDataFolder = resourcesFolder.go(["data", "resolutions"])
@@ -58,25 +79,6 @@ def copyMuxSchemes():
     for scheme in muxSchemes:
         Node(scheme).copy(activeSchemesFolder.path())
     Console.success(f"Schemes copied in {activeSchemesFolder.path().name}.")
-
-def copyActive():
-    defaultVariantFolder = variantsFolder.go([defaultVariant, "theme", "active"])
-    defaultVariantFolder.mergeInto(auroraFolder.path(), overwrite=True)
-    Console.success(f"Default variant ({defaultVariant}) copied.")
-
-
-def defineActive():
-    activeLocation = auroraFolder.go("active.txt")
-    activeLocation.write(defaultVariant)
-    Console.success(f"Default variant ({defaultVariant}) defined.")
-
-
-def zipAssets():
-    zipLocation = auroraFolder.go("assets.muxzip")
-    zipLocation.delete()
-    consoleIcons = resourcesFolder.go("consoleIcons")
-    consoleIcons.zip(zipLocation.path(), "muxzip")
-    Console.success("Assets zipped.")
 
 
 def zipVariants():
