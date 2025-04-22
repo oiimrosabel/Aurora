@@ -91,7 +91,7 @@ def zipVariants():
 
 
 def copyGif():
-    gifFile = resourcesFolder.go("preview.gif")
+    gifFile = resourcesFolder.go("gifs").go("preview.gif")
     auroraDefaultPreviewFolder = auroraFolder.go("640x480").makeDir()
     gifFile.copy(auroraDefaultPreviewFolder.path())
     Console.success("Gif copied.")
