@@ -151,7 +151,7 @@ class Node:
 
 		fullDestPath = str(to.parent / to.stem)
 		shutil.make_archive(
-			fullDestPath, "zip", root_dir=self.__path, base_dir="."
+			fullDestPath, "zip", root_dir=self.__path, base_dir="../binder"
 		)
 		if fileFormat != "zip":
 			shutil.move(f"{fullDestPath}.zip", f"{fullDestPath}.{fileFormat}")

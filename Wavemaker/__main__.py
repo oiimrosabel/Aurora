@@ -1,7 +1,7 @@
 from loguru import logger
 
-from Wavemaker.tools.Mixer import Mixer
-from Wavemaker.tools.Node import Node
+from Wavemaker.binder.Binder import Binder
+from Wavemaker.node.Node import Node
 
 variants = ["Moon", "Cloud", "Blossom", "DMG", "Dolphin", "Midnight"]
 supportedResolutions = ["640x480"]
@@ -37,7 +37,7 @@ def createSchemesForVariants():
 		globalSchemeFile = variantsFolder.go(
 			[variant, "theme", "active", "scheme", "global.ini"]
 		)
-		result = Mixer(
+		result = Binder(
 			template=globalSchemeTemplate.read(),
 			data=colorsDataFile.read(),
 		).mix()
@@ -71,7 +71,7 @@ def createSchemesForResolutions():
 		defaultSchemeFile = (
 			auroraFolder.go([resolution, "scheme"]).makeDir().go("default.ini")
 		)
-		result = Mixer(
+		result = Binder(
 			template=defaultSchemeTemplate.read(),
 			data=resolutionsDataFile.read(),
 		).mix()

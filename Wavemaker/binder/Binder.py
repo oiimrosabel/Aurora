@@ -4,7 +4,7 @@ import tomllib
 from loguru import logger
 
 
-class Mixer:
+class Binder:
 	__template: str
 	__data: dict[str, str | bool]
 
