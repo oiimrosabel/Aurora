@@ -1,0 +1,5 @@
+loguru==0.7.3
+pastel==0.2.1
+poethepoet==0.34.0
+pyyaml==6.0.2
+ruff==0.11.6
