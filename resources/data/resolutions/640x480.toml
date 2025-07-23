@@ -8,8 +8,9 @@ barPos = "420"
 
 chargerPos = "165"
 
-cellDims = "150"
+cellWidth = "145"
+cellHeight = "150"
 rowsNb = "2"
 columnsNb = "4"
-rowHeight = "178"
-colWidth = "160"
+rowHeight = "162"
+colWidth = "157"
