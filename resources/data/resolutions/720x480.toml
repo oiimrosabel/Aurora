@@ -1,0 +1,16 @@
+height = "336"
+width = "696"
+
+listNb = "7"
+
+barWidth = "696"
+barPos = "420"
+
+chargerPos = "165"
+
+cellWidth = "165"
+cellHeight = "150"
+rowsNb = "2"
+columnsNb = "4"
+rowHeight = "162"
+colWidth = "177"
