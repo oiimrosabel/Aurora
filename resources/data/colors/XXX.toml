@@ -8,3 +8,8 @@ widget = "000000"
 
 hover = "000000"
 hoverText = "000000"
+
+bigRadius = "0"
+mediumRadius = "0"
+smallRadius = "0"
+keyboardRadius = "0" 

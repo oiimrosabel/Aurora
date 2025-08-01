@@ -1,10 +1,15 @@
 text = "003502"
-header = "272929"
-active = "494786"
-low = "ED2A1C"
+header = "003502"
+active = "306230"
+low = "F94144"
 
 bg = "C4DD9D"
 widget = "BAD490"
 
-hover = "AFCB84"
+hover = "88A96F"
 hoverText = "003502"
+
+bigRadius = "0"
+mediumRadius = "0"
+smallRadius = "0"
+keyboardRadius = "0"

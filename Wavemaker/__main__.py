@@ -4,7 +4,7 @@ from Wavemaker.tools.Mixer import Mixer
 from Wavemaker.tools.Node import Node
 
 variants = ["Moon", "Cloud", "Blossom", "DMG", "Dolphin", "Midnight"]
-supportedResolutions = ["640x480", "720x480"]
+supportedResolutions = ["640x480", "720x480", "720x720"]
 defaultVariant = variants[0]  # Moon
 
 root = Node(__file__).container().back()

@@ -8,3 +8,8 @@ widget = "3B3C98"
 
 hover = "CCE4FF"
 hoverText = "111A57"
+
+bigRadius = "64"
+mediumRadius = "32"
+smallRadius = "16"
+keyboardRadius = "8"
